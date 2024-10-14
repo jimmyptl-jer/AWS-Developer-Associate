@@ -1,4 +1,3 @@
-<<<<<<< Terraform
 ### HCL (HashiCorp Configuration Language)
 
 **HashiCorp Configuration Language (HCL)** is the language used by Terraform for defining infrastructure as code. HCL is designed to be both human-readable and machine-friendly, making it easy to define infrastructure resources and configurations for cloud providers.
@@ -652,26 +651,3 @@ resource "aws_s3_bucket" "my_bucket" {
 output "bucket_name" {
   value = aws_s3_bucket.my_bucket.bucket
 }
-```
-
-## AWS DevOps Practices
-
-The repository also covers best practices for AWS DevOps, including:
-
-- Implementing CI/CD pipelines using AWS services.
-- Monitoring infrastructure and applications with AWS CloudWatch.
-- Managing security and access control through IAM roles and policies.
-
-## Contact
-
-For any inquiries, questions, or collaboration opportunities, feel free to reach out!
-
-**Website**: [www.jimmypatel.tech](http://www.jimmypatel.tech)
-
----
-
-Feel free to explore the repository and contribute! Your feedback and contributions are always welcome.
-```
-
-##
->>>>>>> main
