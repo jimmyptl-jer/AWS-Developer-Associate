@@ -63,7 +63,7 @@ resource "aws_subnet" "public_subnet_3" {
 # Create Private Subnets for backend resources without direct internet access
 resource "aws_subnet" "private_subnet_1" {
   vpc_id            = aws_vpc.my_vpc.id # Associate the subnet with the VPC
-  cidr_block        = "10.0.4.0/24"     # Private subnet CIDR block
+  cidr_block        = "10.0.21.0/24"    # Private subnet CIDR block
   availability_zone = "us-east-1a"      # Specify the AZ (us-east-1a)
 
   tags = {
@@ -73,7 +73,7 @@ resource "aws_subnet" "private_subnet_1" {
 
 resource "aws_subnet" "private_subnet_2" {
   vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "10.0.5.0/24"
+  cidr_block        = "10.0.22.0/24"
   availability_zone = "us-east-1b"
 
   tags = {
@@ -81,13 +81,13 @@ resource "aws_subnet" "private_subnet_2" {
   }
 }
 
-resource "aws_subnet" "private_subnet_2" {
+resource "aws_subnet" "private_subnet_3" {
   vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "10.0.5.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block        = "10.0.23.0/24"
+  availability_zone = "us-east-1c"
 
   tags = {
-    Name = "terrafom_PrivateSubnet2"
+    Name = "terrafom_PrivateSubnet3"
   }
 }
 
@@ -186,22 +186,3 @@ resource "aws_security_group" "my-new-security-group" {
   }
 }
 
-resource "random_id" "randomness" {
-  byte_length = 16
-}
-
-resource "aws_s3_bucket" "S3-bucket" {
-  bucket = "graywolf-bucket-${random_id.randomness.hex}"
-
-  tags = {
-    Name    = "Graywolf Bucket"
-    Purpose = "Intro to Resource Blocks Lab"
-  }
-}
-
-resource "aws_s3_bucket_ownership_controls" "my_new_bucket_acl" {
-  bucket = aws_s3_bucket.S3-bucket.id
-  rule {
-    object_ownership = "BucketOwnerPreferred"
-  }
-}
