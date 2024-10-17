@@ -651,3 +651,53 @@ resource "aws_s3_bucket" "my_bucket" {
 output "bucket_name" {
   value = aws_s3_bucket.my_bucket.bucket
 }
+
+A **Terraform Workspace** is a feature of Terraform that allows you to manage multiple distinct instances of a single configuration. Each workspace has its own state file, enabling you to work with different environments (e.g., development, staging, production) without duplicating your code. This is particularly useful when you want to manage infrastructure for different environments but share the same configuration code.
+
+### Key Points About Terraform Workspaces:
+1. **Default Workspace**: Every Terraform project starts with a default workspace. If you don't explicitly create additional workspaces, all operations will happen in this default workspace.
+   
+2. **Creating Workspaces**: You can create new workspaces with the command:
+   ```
+   terraform workspace new <workspace_name>
+   ```
+
+3. **Switching Between Workspaces**: To switch between workspaces, use:
+   ```
+   terraform workspace select <workspace_name>
+   ```
+
+4. **Listing Workspaces**: You can view all available workspaces in the current directory by running:
+   ```
+   terraform workspace list
+   ```
+
+5. **Deleting Workspaces**: To delete a workspace, use:
+   ```
+   terraform workspace delete <workspace_name>
+   ```
+   Note that you cannot delete the default workspace.
+
+6. **Use Case**: Workspaces are often used to create isolated environments like `dev`, `staging`, and `prod`, each having its own separate state.
+
+7. **Limitations**: Workspaces are not suitable for every scenario. For example, they are not recommended for managing entirely different cloud providers or drastically different environments, as you may run into limitations in terms of state management and separation.
+
+### Practical Example:
+In a scenario where you're managing multiple environments (like `dev`, `staging`, `prod`), you can use workspaces to switch between environments while keeping the same infrastructure code. The Terraform state file for each workspace is stored separately, so changes to one environment won’t affect others.
+
+### Workflow:
+1. Initialize your Terraform configuration:
+   ```bash
+   terraform init
+   ```
+
+2. Create or switch to the required workspace:
+   ```bash
+   terraform workspace new dev   # Create and switch to 'dev'
+   terraform workspace select prod   # Switch to 'prod'
+   ```
+
+3. Apply infrastructure changes specific to the current workspace:
+   ```bash
+   terraform apply
+   ```
