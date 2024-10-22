@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"vpc","Source":"../terraform-modules/vpc","Dir":"../terraform-modules/vpc"}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ec2_linux","Source":"../terraform-modules/ec2_linux","Dir":"../terraform-modules/ec2_linux"},{"Key":"ec2_ubuntu","Source":"../terraform-modules/ec2_ubuntu","Dir":"../terraform-modules/ec2_ubuntu"},{"Key":"vpc","Source":"../terraform-modules/vpc","Dir":"../terraform-modules/vpc"}]}
